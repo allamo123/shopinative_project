@@ -1,0 +1,10 @@
+{
+    "Subscriber": true,
+    "Admin": true,
+    "Authentication": false,
+    "Subscribtion": true,
+    "Core": true,
+    "Ecommerce": true,
+    "WebBuilder": true,
+    "MobileAppBuilder": true
+}
