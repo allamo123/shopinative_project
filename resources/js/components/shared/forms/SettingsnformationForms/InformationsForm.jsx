@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Grid, makeStyles, TextField, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectedDirection } from "@/store/slices/langSlice";
 import { RtlLabelStyle } from "@/RtlLabelStyle";
 import NumberFormat from "react-number-format";
 import { useTranslation } from "react-i18next";
 import { Autocomplete } from "@material-ui/lab";
+import { ArrowDropDown } from "@material-ui/icons";
 
 
 const InformationsForm = ({ currencies, industries }) => {
@@ -29,7 +30,6 @@ const InformationsForm = ({ currencies, industries }) => {
 
     const classes = RtlLabelStyle();
 
-
     const direction = useSelector(selectedDirection);
 
     const handlSubmit = () => {
@@ -45,6 +45,8 @@ const InformationsForm = ({ currencies, industries }) => {
         <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <Autocomplete
+                    dir={direction}
+                    autoFocus
                     options={industries}
                     getOptionLabel={(option) => option.name}
                     value={industries.find(opt => opt.id === data.store_industry) || null}
@@ -53,12 +55,18 @@ const InformationsForm = ({ currencies, industries }) => {
                     }}
                     renderInput={(params) => (
                         <TextField
+                        dir={direction}
                         {...params}
-                        label="Industry"
+                        label={t("labels.Store_industry")}
                         variant="outlined"
                         fullWidth
-                        error={errors.store_industry ? true : false}
-                        />
+                        error={!!errors.store_industry}
+                        inputProps={{
+                            ...params.inputProps,
+                            dir: direction,
+                            style: { textAlign: direction === "rtl" ? "right" : "left" },
+                        }}
+                    />
                     )}
                 />
                 {errors.store_industry && (
@@ -69,7 +77,6 @@ const InformationsForm = ({ currencies, industries }) => {
             </Grid>
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
-                    autoFocus
                     label={t("labels.Store_name")}
                     variant="outlined"
                     type="text"
@@ -186,7 +193,12 @@ const InformationsForm = ({ currencies, industries }) => {
                     error={errors.store_phone ? true : false}
                     fullWidth
                     required
-                    classes={direction === 'rtl' ? {root: classes.rootInput} : {}}
+                    InputProps={{
+                        inputProps: {
+                        dir: direction === "rtl" ? "rtl" : "ltr",
+                        style: { textAlign: direction === "rtl" ? "right" : "left" },
+                        },
+                    }}
                 />
                 {errors.store_phone &&
                     <Typography variant="subtitle2" color="error">

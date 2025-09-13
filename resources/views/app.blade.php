@@ -35,6 +35,10 @@
           display: flex;
           flex-direction: row-reverse;
         }
+        [dir="rtl"] .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-endAdornment {
+            right: auto;      /* reset default */
+            left: 9px;        /* move arrow to the left side */
+        }
     </style>
 </head>
 <body>

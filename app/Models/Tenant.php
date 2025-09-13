@@ -33,7 +33,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     /**
      * Get the user associated with the Tenant
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
@@ -43,7 +43,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
     /**
      * Get the template associated with the Tenant
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function template()
     {
