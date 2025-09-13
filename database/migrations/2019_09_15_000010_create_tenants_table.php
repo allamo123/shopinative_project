@@ -23,6 +23,14 @@ class CreateTenantsTable extends Migration
 
             $table->string('store_name')->nullable();
 
+            $table->unsignedBigInteger('industry_id')->nullable();
+
+            $table->foreign('industry_id')
+                  ->references('id')
+                  ->on('industries')
+                  ->onDelete('set null')
+                  ->onUpdate('cascade');
+
             $table->unsignedBigInteger('template_id')->nullable();
 
             $table->foreign('template_id')

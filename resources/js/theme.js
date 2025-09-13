@@ -89,6 +89,11 @@ export const theme = createTheme({
         }
       }
     },
+    MuiCard: {
+      root: {
+       border: '1px solid #ddd',
+      }
+    },
     MuiAutocomplete: {
       root: {
         backgroundColor: '#f5f5f5',

@@ -197,7 +197,14 @@
         "Primary_color": "اللون الأساسي",
         "Secondary_color": "اللون الثانوي",
         "Title_text_color": "لون نص العنوان",
-        "Paragraph_text_color": "لون نص الفقرة"
+        "Paragraph_text_color": "لون نص الفقرة",
+
+
+        "Store_slogan": "شعار المتجر",
+        "Store_tax": "ضريبة المتجر",
+        "Store_phone": "هاتف المتجر",
+        "Store_email": "بريد المتجر"
+
     },
     "buttons": {
         "Edit Profile": "تعديل الملف الشخصي",

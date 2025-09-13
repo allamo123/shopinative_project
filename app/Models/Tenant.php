@@ -24,6 +24,7 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'id',
             'user_id',
             'store_name',
+            'industry_id',
             'template_id',
             'is_active',
         ];

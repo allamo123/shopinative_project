@@ -29,11 +29,6 @@ export const SidebarNavigation = ({ links, id, open }) => {
     return (
         links.map(({title, menu},index) =>
             <Box key={index} sx={{maxWidth: '100%', height: '100%'}}>
-                {/* {title &&
-                <Box paddingBottom={1}>
-                    <Typography className={classes.groupTitle} variant="subtitle1">{t('layouts.'+title)}</Typography>
-                </Box>} */}
-                <PerfectScrollbar className={classes.scroll} containerRef={el => (scroll.current = el)}>
                     <MenuList classes={{root: classes.ul}} disablePadding>
                             {menu.map(({title, label, icon, href, hasParameter, buttonHref}, index) =>
                                 <Box key={index} sx={index === menu.length-1 ? {flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'start'} : {}}>
@@ -87,7 +82,6 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                 </Box>
                             )}
                     </MenuList>
-                </PerfectScrollbar>
 
             </Box>
         )

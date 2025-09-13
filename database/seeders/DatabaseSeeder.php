@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SubscribtionPlanSeeder::class,
+            IndustrySeeder::class,
+            TemplateSeeder::class,
+            CurrencySeeder::class,
         ]);
     }
 }

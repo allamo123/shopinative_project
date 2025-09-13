@@ -3,15 +3,15 @@ import clsx from "clsx";
 import { Container, Typography, ThemeProvider, CssBaseline, Grid, Box, Button } from "@material-ui/core";
 import { usePage } from "@inertiajs/inertia-react";
 import { Head } from "@inertiajs/inertia-react";
-import { SidebarNavigation } from "./sidebar/SidebarNavigation";
+import { SidebarNavigation } from "../../components/layout//sidebar/SidebarNavigation";
 import { Inertia } from "@inertiajs/inertia";
-import SideBar from "./sidebar/SideBar";
+import SideBar from "../../components/layout/sidebar/SideBar";
 import Loader from "@/components/shared/loader/Loader";
-import { Header } from "./Header/Header";
+import { Header } from "./../../components/layout/Header/Header";
 import { MainStyle, RtlMainStyle } from "./MainStyle";
 import { theme } from "@/theme";
-import { MainSidebar } from "./sidebar/SidebarLinks.jsx";
-
+import { MainSidebar } from "../../components/layout/sidebar/SidebarLinks";
+import Footer  from '../../components/layout/Footer/Footer'
 import { selectedDirection, setLangDirection } from "@/store/slices/langSlice";
 import { useTranslation } from "react-i18next";
 import createCache from "@emotion/cache";
@@ -19,9 +19,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { CacheProvider } from "@emotion/react";
 import { prefixer } from "stylis";
 import stylisRTLPlugin from "stylis-plugin-rtl";
-import { HeaderTwo } from "./Header/HeaderTwo";
+import { HeaderTwo } from "../../components/layout/Header/HeaderTwo";
 import { FlashMsg } from "../../components/shared/Alerts/FlashMsg/FlashMsg";
-import Footer from "./Footer/Footer";
 
 const DashboardLayout = ({ hideSideBar, children, head, title, BredcrumbLinks, TitleRightContent, extraLinks, type, target}) => {
 
@@ -105,7 +104,7 @@ const DashboardLayout = ({ hideSideBar, children, head, title, BredcrumbLinks, T
                                 className={clsx(classes.dynamicPageTitle, {
                                     [classes.titlePadding]: !open
                                 })}
-                                mb={5}
+                                mb={3}
                                 sx={{
                                     pt:3,
                                     pb:3,

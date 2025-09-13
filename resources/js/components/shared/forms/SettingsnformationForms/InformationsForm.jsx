@@ -6,18 +6,24 @@ import { selectedDirection } from "@/store/slices/langSlice";
 import { RtlLabelStyle } from "@/RtlLabelStyle";
 import NumberFormat from "react-number-format";
 import { useTranslation } from "react-i18next";
+import { Autocomplete } from "@material-ui/lab";
 
-const InformationsForm = () => {
 
+const InformationsForm = ({ currencies, industries }) => {
+
+    console.log(industries);
     const { t } = useTranslation();
 
     const { app } = usePage().props;
 
     const { data, setData, post, errors } = useForm({
+        store_industry: '',
         store_name: '',
+        store_slogan: '',
         store_domain: '',
         store_email: '',
         store_phone: '',
+        store_currency: '',
         store_tax: '',
     });
 
@@ -37,7 +43,31 @@ const InformationsForm = () => {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                <Autocomplete
+                    options={industries}
+                    getOptionLabel={(option) => option.name}
+                    value={industries.find(opt => opt.id === data.store_industry) || null}
+                    onChange={(event, newValue) => {
+                        setData('store_industry', newValue ? newValue.id : '');
+                    }}
+                    renderInput={(params) => (
+                        <TextField
+                        {...params}
+                        label="Industry"
+                        variant="outlined"
+                        fullWidth
+                        error={errors.store_industry ? true : false}
+                        />
+                    )}
+                />
+                {errors.store_industry && (
+                <Typography variant="subtitle2" color="error">
+                    {errors.store_industry}
+                </Typography>
+                )}
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
                     autoFocus
                     label={t("labels.Store_name")}
@@ -56,7 +86,25 @@ const InformationsForm = () => {
                     </Typography>
                 }
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                <TextField
+                    label={t("labels.Store_slogan")}
+                    variant="outlined"
+                    type="text"
+                    onChange={e => setData('store_slogan', e.target.value)}
+                    value={data.store_slogan}
+                    error={errors.store_slogan ? true : false}
+                    fullWidth
+                    required
+                    classes={direction === 'rtl' ? {root: classes.rootInput} : {}}
+                />
+                {errors.store_slogan &&
+                    <Typography variant="subtitle2" color="error">
+                        {errors.store_slogan}
+                    </Typography>
+                }
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
                     label={t("labels.Store_domain")}
                     variant="outlined"
@@ -77,7 +125,7 @@ const InformationsForm = () => {
                     </Typography>
                 }
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <NumberFormat
                     displayType="input"
                     type="text"
@@ -87,6 +135,7 @@ const InformationsForm = () => {
                     customInput={TextField}
                     label={t("labels.Store_tax")+' %'}
                     variant="outlined"
+                    error={errors.store_tax ? true : false}
                     fullWidth
                     required
                     classes={direction === 'rtl' ? {root: classes.rootInput} : {}}
@@ -97,7 +146,34 @@ const InformationsForm = () => {
                     </Typography>
                 }
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                <Autocomplete
+                    options={currencies}
+                    getOptionLabel={(option) => `${option.name} (${option.code})`}
+                    value={currencies.find(opt => opt.code === data.store_currency) || null}
+                    onChange={(event, newValue) => {
+                        setData('store_currency', newValue ? newValue.code : '');
+                    }}
+                    renderInput={(params) => (
+                        <TextField
+                        {...params}
+                        label={t("labels.Store_currency")}
+                        variant="outlined"
+                        fullWidth
+                        error={!!errors.store_currency}
+                        required
+                        classes={direction === 'rtl' ? { root: classes.rootInput } : {}}
+                        />
+                    )}
+                    />
+                    {errors.store_currency && (
+                    <Typography variant="subtitle2" color="error">
+                        {errors.store_currency}
+                    </Typography>
+                    )}
+
+            </Grid>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <NumberFormat
                     displayType="input"
                     type="tel"
@@ -107,6 +183,7 @@ const InformationsForm = () => {
                     customInput={TextField}
                     label={t("labels.Store_phone")}
                     variant="outlined"
+                    error={errors.store_phone ? true : false}
                     fullWidth
                     required
                     classes={direction === 'rtl' ? {root: classes.rootInput} : {}}
@@ -117,9 +194,8 @@ const InformationsForm = () => {
                     </Typography>
                 }
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                 <TextField
-                    autoFocus
                     label={t("labels.Store_email")}
                     variant="outlined"
                     type="email"
@@ -138,14 +214,7 @@ const InformationsForm = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <Box mt={3} mb={3}>
-                    {errors.service &&
-                        <Box mb={4}>
-                            <Typography variant="subtitle2" color="error">
-                                {errors.service}
-                            </Typography>
-                        </Box>
-                    }
-                    <Button variant="contained" onClick={handlSubmit} color="primary">
+                    <Button variant="contained" size="large" onClick={handlSubmit} color="primary">
                         {t('buttons.Submit')}
                     </Button>
                 </Box>

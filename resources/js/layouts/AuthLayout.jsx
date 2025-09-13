@@ -12,7 +12,7 @@ import { CacheProvider } from "@emotion/react";
 import { Logo } from "../components/shared/Logo/Logo"
 import { Link, usePage } from "@inertiajs/inertia-react";
 import { UserDropdown } from "../components/shared/UserDropdown/UserDropdown";
-import Footer from "./DashboardLayout/Footer/Footer";
+import Footer from "../components/layout/Footer/Footer";
 
 
 

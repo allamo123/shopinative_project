@@ -1,33 +1,40 @@
-import { makeStyles } from "@material-ui/core";
+import { colors, makeStyles } from "@material-ui/core";
 
 export const SideBarNavigationStyle = makeStyles((theme) => ({
     scroll: {
         maxHeight: '87vh',
     },
     ul: {
+        width: '100%',
         height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        border: '1px solid #ddd',
+        padding: '15px !important'
     },
     groupTitle: {
         textTransform: 'capitalize'
     },
     link: {
-        columnGap: 4,
-        paddingTop: '15px !important',
-        paddingBottom: '15px !important',
-        alignItems: 'center !important',
+        marginBottom: 8,
         transition: 'all 1s',
+        cursor: 'pointer',
         '&:hover':{
-            backgroundColor: '#45ccce3d',
+            backgroundColor: '#f5f5f5',
             transition: 'all 1s',
         }
     },
     active: {
-        backgroundColor: '#45ccce3d',
+        backgroundColor: '#f5f5f5',
+        color: '#121212',
+        cursor: 'auto',
+        borderRadius: 5,
+        '& .MuiSvgIcon-root': {
+            color: '#121212'
+        }
     },
     activeIcon: {
-        color: `#121212 !important`
+        color: `#000 !important`
     },
     openIcon: {
         minWidth: '0 !important',
@@ -41,7 +48,7 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
     },
     activeText: {
         color: '#121212',
-        fontWeight: 'bold'
+        fontWeight: '700 !important',
     },
     IconButton: {
         backgroundColor: theme.palette.secondary.main,

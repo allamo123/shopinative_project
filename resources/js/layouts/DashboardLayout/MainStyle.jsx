@@ -4,7 +4,6 @@ export const MainStyle = makeStyles((theme) => ({
     pageTitleHeader: {
         justifyContent: 'space-between',
         alignItems:'center',
-        padding: theme.spacing(0, 1),
     },
     pageTitle :{
         display: 'flex',
@@ -17,9 +16,6 @@ export const MainStyle = makeStyles((theme) => ({
     titlePadding: {
         paddingLeft: 52,
         transition: '.2s',
-        // [theme.breakpoints.up('md')]: {
-        //     paddingLeft: '4%',
-        // },
     },
     buttonTextColor: {
         color: '#fff'
@@ -47,8 +43,7 @@ export const MainStyle = makeStyles((theme) => ({
         paddingLeft: 213,
     },
     middleContent: {
-        // paddingTop: theme.spacing(2),
-        // paddingBottom: theme.spacing(2),
+        padding: '8px 52px',
     },
     maxWidth: {
         paddingLeft: 50,

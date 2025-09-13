@@ -50,7 +50,9 @@
       "No_business_set": "It Looks Like You Haven’t Set Up Your Business Yet.",
       "Get_started_bussiness": "Let’s Get Started And Bring Your Business To Life!",
       "Logo_and_icon": "Logo & Icon",
-      "Color_pallete": "Color Palette"
+      "Color_pallete": "Color Palette",
+
+      "General_configurations": "General Configurations"
     },
     "toolTips": {
         "Add_new_category": "Add New Category",
@@ -207,7 +209,12 @@
         "Primary_color": "Primary Color",
         "Secondary_color": "Secondary Color",
         "Title_text_color": "Title Text Color",
-        "Paragraph_text_color": "Paragraph Text Color"
+        "Paragraph_text_color": "Paragraph Text Color",
+
+        "Store_slogan": "Store Slogan",
+        "Store_tax": "Store Tax",
+        "Store_phone": "Store Phone",
+        "Store_email": "Store Email"
     },
     "buttons": {
         "Edit Profile": "Edit Profile",
