@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { render } from 'react-dom';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
@@ -20,11 +20,11 @@ const cacheRtl = createCache({ key: 'muirtl', stylisPlugins: [prefixer, stylisRT
 
 const RootWrapper = ({ children }) => {
 
-  const direction = useSelector(selectedDirection);
+    const direction = useSelector(selectedDirection);
 
-  useEffect(() => {
-    document.documentElement.setAttribute('dir', direction);
-  }, [direction]);
+    useLayoutEffect(() => {
+        document.body.setAttribute('dir', direction);
+    }, [direction]);
 
   return (
     <CacheProvider value={direction === 'rtl' ? cacheRtl : cacheLtr}>

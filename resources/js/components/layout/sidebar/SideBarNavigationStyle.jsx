@@ -8,8 +8,7 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
         backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: '15px !important'
+        padding: '15px 6px !important'
     },
     groupTitle: {
         textTransform: 'capitalize'
@@ -19,6 +18,8 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         marginBottom: 8,
         transition: 'all .2s',
         cursor: 'pointer',
+        alignItems: 'flex-start !important',
+        columnGap: 4,
         '&:hover':{
             transition: 'all .3s',
             '& .MuiTypography-root': {
@@ -45,8 +46,12 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
     activeIcon: {
         color: `#fff !important`
     },
-    openIcon: {
+    ItemIcon: {
         minWidth: '0 !important',
+    },
+    shrinkSide: {
+        padding: '10px !important',
+        textAlign: 'center'
     },
     ListItemText: {
        textTransform: 'capitalize',

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const HeaderStyle = makeStyles(() => ({
+export const HeaderStyle = makeStyles((theme) => ({
     root: {
         display: 'flex',
         alignItems: 'center',
@@ -24,6 +24,8 @@ export const HeaderStyle = makeStyles(() => ({
         backgroundColor: '#fff !important',
         height: 62,
         justifyContent: 'center',
+        boxShadow: 'none !important',
+        borderBottom: '1px solid #ddd !important'
     },
     brand: {
         width: 185,
@@ -61,6 +63,8 @@ export const RtlHeaderStyle = makeStyles(() => ({
         backgroundColor: '#fff !important',
         height: 62,
         justifyContent: 'center',
+        boxShadow: 'none !important',
+        borderBottom: '1px solid #ddd !important'
     },
     brand: {
         width: 185,

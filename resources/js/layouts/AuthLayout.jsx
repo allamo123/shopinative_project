@@ -147,7 +147,7 @@ const AuthLayout = ({ children }) => {
                         <FlashMsg flashMsg={flashMsg} />
                     }
                 </div>
-                <Footer isFixed={true} />
+                <Footer color="#fff" />
                 <div className={classes.overlay}></div>
             </ThemeProvider>
         </CacheProvider>

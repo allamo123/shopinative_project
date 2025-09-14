@@ -60,7 +60,7 @@ export const SideBarStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: theme.spacing(4, 1.2),
+    padding: theme.spacing(3, 1.2),
     color: '#FFFFFF',
     boxShadow: '0px 1px 5px rgb(100 116 139 / 12%)',
     minHeight: 62,

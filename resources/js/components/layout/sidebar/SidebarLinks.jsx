@@ -31,12 +31,6 @@ export const MainSidebar = [
                 href: 'tenant.home',
                 hasParameter: false
             },
-            {
-                label : 'Template',
-                icon: <HomeIcon fontSize='small' />,
-                href: 'setup.index',
-                hasParameter: false
-            },
         ]
     },
 ];

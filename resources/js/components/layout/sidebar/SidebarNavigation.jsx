@@ -58,7 +58,8 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                         :
                                         <List component="li" disablePadding>
                                             <ListItem className={clsx(classes.link, {
-                                                [classes.active] : checkActiveLink(href)
+                                                [classes.active] : checkActiveLink(href),
+                                                [classes.shrinkSide]: !open
                                             })}
                                             href={hasParameter ? route(href, id) : route(href)} component={Link}
                                             onClick={(e) => {
@@ -70,17 +71,18 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                                 {icon &&
                                                     <ListItemIcon className={clsx(classes.ItemIcon, {
                                                         [classes.activeIcon] : checkActiveLink(href),
-                                                        [classes.openIcon] : open,
                                                     })}>
                                                         {icon}
                                                     </ListItemIcon>
                                                 }
-                                                <ListItemText className={clsx(classes.ListItemText, {
-                                                    [classes.activeText] :  checkActiveLink(href),
-                                                })}
-                                                primary={t('layouts.'+label)}
-                                                primaryTypographyProps={checkActiveLink(href) ? {variant: 'subtitle2'} : {variant: 'body2'}}
-                                                />
+                                                {open && (
+                                                    <ListItemText className={clsx(classes.ListItemText, {
+                                                        [classes.activeText] :  checkActiveLink(href),
+                                                    })}
+                                                    primary={t('layouts.'+label)}
+                                                    primaryTypographyProps={checkActiveLink(href) ? {variant: 'subtitle2'} : {variant: 'body2'}}
+                                                    />
+                                                )}
                                             </ListItem>
                                         </List>
                                     }
