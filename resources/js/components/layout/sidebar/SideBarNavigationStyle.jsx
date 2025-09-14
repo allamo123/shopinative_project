@@ -9,32 +9,41 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         height: '100%',
         backgroundColor: '#fff',
         borderRadius: 8,
-        border: '1px solid #ddd',
         padding: '15px !important'
     },
     groupTitle: {
         textTransform: 'capitalize'
     },
     link: {
+        borderRadius: 21,
         marginBottom: 8,
-        transition: 'all 1s',
+        transition: 'all .2s',
         cursor: 'pointer',
         '&:hover':{
-            backgroundColor: '#f5f5f5',
-            transition: 'all 1s',
+            transition: 'all .3s',
+            '& .MuiTypography-root': {
+                color: theme.palette.primary.main,
+            },
+            '& .MuiListItemIcon-root': {
+                color: theme.palette.primary.main,
+            }
         }
     },
     active: {
-        backgroundColor: '#f5f5f5',
-        color: '#121212',
+        backgroundColor: theme.palette.primary.light,
+        color: '#fff',
         cursor: 'auto',
-        borderRadius: 5,
         '& .MuiSvgIcon-root': {
-            color: '#121212'
+            color: '#fff'
+        },
+        '&:hover' : {
+            '& .MuiTypography-root': {
+                color: '#fff',
+            },
         }
     },
     activeIcon: {
-        color: `#000 !important`
+        color: `#fff !important`
     },
     openIcon: {
         minWidth: '0 !important',
@@ -47,15 +56,15 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
        marginTop: '0 !important',
     },
     activeText: {
-        color: '#121212',
-        fontWeight: '700 !important',
+        color: '#fff',
+        fontWeight: '800 !important',
     },
     IconButton: {
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
         color: '#fff',
         padding: 7,
         '&:hover': {
-            backgroundColor: theme.palette.secondary.dark,
+            backgroundColor: theme.palette.primary.light,
         }
     }
 }));

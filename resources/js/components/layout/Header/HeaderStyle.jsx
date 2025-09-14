@@ -7,7 +7,7 @@ export const HeaderStyle = makeStyles(() => ({
         flex: 1,
         width: '100%',
         marginLeft: 'auto',
-        paddingLeft: 220,
+        paddingLeft: 270,
         transition: 'all .5s',
     },
     welcome: {
@@ -44,7 +44,7 @@ export const RtlHeaderStyle = makeStyles(() => ({
         flex: 1,
         width: '100%',
         marginLeft: 'auto',
-        paddingRight: 220,
+        paddingRight: 270,
         transition: 'all .5s',
     },
     welcome: {

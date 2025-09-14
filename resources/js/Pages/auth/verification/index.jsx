@@ -2,8 +2,8 @@ import React from "react";
 import AuthLayout from "../../../layouts/AuthLayout";
 import { Box, Button, Grid, Typography } from "@material-ui/core";
 import { useForm } from "@inertiajs/inertia-react";
-import CircleClipLoader from "../../../components/shared/loader/Loader";
 import { useTranslation } from "react-i18next";
+import CircleClipLoader from "../../../components/shared/Alerts/Loader/CircleClipLoader";
 
 const Verification = () => {
 

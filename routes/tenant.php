@@ -36,23 +36,24 @@ Route::middleware([
         Route::get('login', [AuthenticationController::class, 'showLoginForm'])->name('login.show');
         Route::post('login', [LoginController::class, 'login'])->name('user.login');
         Route::get('forgot/password', [ResetPasswordController::class, 'showResetForm'])->name('forgot.password');
-    Route::post('forgot/password', [ResetPasswordController::class, 'resetPassword'])->name('reset.password.link');
+        Route::post('forgot/password', [ResetPasswordController::class, 'resetPassword'])->name('reset.password.link');
 
-    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'setNewPassword'])->name('password.reset');
-    Route::post('password/update', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
+        Route::get('/reset-password/{token}', [ResetPasswordController::class, 'setNewPassword'])->name('password.reset');
+        Route::post('password/update', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
     });
 
     // autourized routes
-    Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware(['auth', 'verified', 'isSubscribed'])->group(function () {
         // bussiness setup routes
         Route::prefix('shop-setup')->group(function() {
-            Route::resource('general', GeneralSetupController::class)->names('setup');
+            Route::resource('general', GeneralSetupController::class)
+                ->except(['destroy'])
+                ->names('setup');
         });
 
-        // dashboard routes
-        Route::middleware(['isSubscribed', 'isBussiness'])->group(function () {
+        Route::middleware(['isBussiness'])->group(function () {
+            // dashboard routes
             Route::get('/dashboard', [HomeController::class, 'index'])->name('tenant.home');
         });
     });
-
 });

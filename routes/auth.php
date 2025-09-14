@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Subscription;
 
 use App\Events\SubscriptionCreated;
 
@@ -38,52 +39,61 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [SubscribtionController::class, 'index'])->name('subscribtion.index');
 
         // temporary route closure function
+
         Route::post('checkout', function(Request $request) {
 
+            $user = auth()->user();
+            $subscriptionPlan = SubscriptionPlan::findOrFail($request->plan_id);
+            $subdomain = strtolower(str_replace(' ', '-', $user->first_name . $user->last_name) . '-' . Str::random(4));
+
             try {
+                $tenant = Tenant::create([
+                    'id'      => Str::random(7),
+                    'user_id' => $user->id,
+                ]);
+
                 DB::beginTransaction();
 
-                $user = auth()->user();
-
-                $subscriptionPlan = SubscriptionPlan::findOrFail($request->plan_id);
-
-                $tenant = Tenant::create([
-                    'id'        => Str::random(7),
-                    'user_id'   => $user->id,
-                ]);
-
-                $subdomain = strtolower(str_replace(' ', '-', $user->first_name . $user->last_name) . '-' . Str::random(4));
-
+                // Create domain
                 $tenant->domains()->create([
-                    'domain' => "{$subdomain}." . config('tenancy.central_domains.0'),
-                    'type'   => 'admin'
+                    'domain' => "$subdomain." . config('tenancy.central_domains.0'),
+                    'type'   => 'admin',
                 ]);
 
-                $subscription = $subscriptionPlan->subscribtions()->create([
-                    'tenant_id'           => $tenant->id,
+                // Create subscription
+                $tenant->subscriptions()->create([
                     'subscription_date' => now()->format('Y-m-d'),
                     'expire_date'       => now()->addMonth(1)->format('Y-m-d'),
                     'price'             => $subscriptionPlan->local_price,
+                    'subscription_plan_id' => $subscriptionPlan->id, // make sure this column exists
                 ]);
-
-                // Optional: Run migrations/seeding here if needed
-                tenancy()->initialize($tenant);
-
-                $admin_domain = $tenant->domains()->where('type', 'admin')->first();
 
                 DB::commit();
 
+                // Get admin domain
+                $admin_domain = $tenant->domains()->where('type', 'admin')->first();
+
+                // Fire subscription created event
                 event(new SubscriptionCreated($user));
 
                 return Inertia::location('https://' . $admin_domain->domain . '/login');
 
             } catch (\Throwable $e) {
+
                 DB::rollBack();
-                dd($e);
+
+                if (isset($tenant)) {
+                    $tenant->delete();
+                    $tenantDatabase = $tenant->getDatabaseName();
+                    DB::statement("DROP DATABASE IF EXISTS `$tenantDatabase`");
+                }
+
                 Log::error('Subscription checkout failed', ['error' => $e->getMessage()]);
                 return redirect()->back()->with('error', 'An error occurred during subscription checkout.');
             }
-        })->name('subscribtion.checkout');
+
+        })->name('subscription.checkout');
+
     });
 });
 

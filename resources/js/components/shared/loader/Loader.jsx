@@ -9,7 +9,7 @@ const Loader = ({spinner, children}) => {
         <div className={classes.body}>
             <div className={classes.fallbackSpinner}>
                 <div className={classes.loading}>
-                    <BeatLoader color="#14a800" speedMultiplier={0.5}/>
+                    <BeatLoader color="#bf198d" speedMultiplier={0.5}/>
                     {children}
                 </div>
             </div>

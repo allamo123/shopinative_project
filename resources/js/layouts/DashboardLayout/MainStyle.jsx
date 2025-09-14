@@ -40,7 +40,7 @@ export const MainStyle = makeStyles((theme) => ({
         width: '100%',
         marginLeft: 'auto',
         transition: '.2s',
-        paddingLeft: 213,
+        paddingLeft: 262,
     },
     middleContent: {
         padding: '8px 52px',
@@ -108,7 +108,7 @@ export const RtlMainStyle = makeStyles((theme) => ({
         width: '100%',
         marginLeft: 'auto',
         transition: '.2s',
-        paddingRight:200
+        paddingRight:262
     },
     middleContent: {
         paddingTop: theme.spacing(3),

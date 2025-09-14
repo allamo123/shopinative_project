@@ -2,6 +2,7 @@ import StoreIcon from '@material-ui/icons/Store';
 import SpeedIcon from '@material-ui/icons/Speed';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import WebIcon from '@material-ui/icons/Web';
+import HomeIcon from '@material-ui/icons/Home';
 
 export const SettingsNavigationLinks = [
     {
@@ -25,9 +26,15 @@ export const MainSidebar = [
     {
         menu:[
             {
-                label : 'Dashboard',
-                icon: <SpeedIcon fontSize='small' />,
+                label : 'Home',
+                icon: <HomeIcon fontSize='small' />,
                 href: 'tenant.home',
+                hasParameter: false
+            },
+            {
+                label : 'Template',
+                icon: <HomeIcon fontSize='small' />,
+                href: 'setup.index',
                 hasParameter: false
             },
         ]

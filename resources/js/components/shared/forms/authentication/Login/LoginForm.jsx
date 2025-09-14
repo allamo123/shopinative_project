@@ -9,7 +9,7 @@ import { RtlLabelStyle } from "../../RtlLabelStyle";
 import { useSelector } from "react-redux";
 import { selectedDirection } from "@/store/slices/langSlice";
 import { PrimarySwitch } from "../../../Switches/PrimarySwitch/PrimarySwitch";
-// import CircleClipLoader from "../../Alerts/Loader/CircleClipLoader";
+import CircleClipLoader from "../../../Alerts/Loader/CircleClipLoader";
 
 export const LoginForm = ( ) => {
 
@@ -135,12 +135,11 @@ export const LoginForm = ( ) => {
                         fullWidth
                         onClick={(e) => processing ? false : handleSubmit(e)}
                     >
-                        {/* {processing ?
+                        {processing ?
                             <CircleClipLoader />
                             :
                             t('buttons.Login')
-                        } */}
-                        {t('buttons.Login')}
+                        }
                     </Button>
                 </Grid>
             </Grid>

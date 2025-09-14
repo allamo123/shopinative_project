@@ -61,6 +61,11 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                                 [classes.active] : checkActiveLink(href)
                                             })}
                                             href={hasParameter ? route(href, id) : route(href)} component={Link}
+                                            onClick={(e) => {
+                                                if (checkActiveLink(href)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
                                             >
                                                 {icon &&
                                                     <ListItemIcon className={clsx(classes.ItemIcon, {

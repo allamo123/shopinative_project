@@ -1,6 +1,8 @@
 {
     "layouts": {
+        "Please be patient": "برجاء الانتظار",
         "Dashboard": "لوحة التحكم",
+        "Home": "الصفحة الرئيسية",
         "See all Notifications": "مشاهدة جميع الاشعارات",
         "Or": "أو",
         "Registeration_page_title": "سجّل الآن لإطلاق متجرك وتطبيقك الخاص!",

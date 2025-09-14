@@ -66,12 +66,6 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return Modules\Company\Entities\CompanyUser
-     */
     protected function create(array $data)
     {
 
@@ -88,9 +82,9 @@ class RegisterController extends Controller
                 'password'              => Hash::make($data['password']),
             ]);
 
-            event(new Registered($user));
-
             DB::commit();
+
+            event(new Registered($user));
 
             return $user;
 

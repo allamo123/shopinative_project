@@ -14,13 +14,17 @@ import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import BackupOutlinedIcon from '@mui/icons-material/BackupOutlined';
 import { useTranslation } from "react-i18next";
 import { Inertia } from "@inertiajs/inertia";
+import { useForm } from "@inertiajs/inertia-react";
+import CircleClipLoader from "../shared/Alerts/Loader/CircleClipLoader";
 
 const SubscribtionPlanCard = ({ plan, user }) => {
 
     const { t } = useTranslation();
 
+    const { processing, post } = useForm();
+
     const handleSubscribe = () => {
-        Inertia.post(route('subscribtion.checkout', {plan_id: plan.id}))
+        post(route('subscription.checkout', {plan_id: plan.id}))
     };
 
 
@@ -58,9 +62,10 @@ const SubscribtionPlanCard = ({ plan, user }) => {
                         fullWidth
                         color="primary"
                         startIcon={<LoginOutlinedIcon color="inherit" />}
-                        onClick={() => handleSubscribe()}
-                    >
-                            {t('buttons.Subscribe_now')}
+                        onClick={() => processing ? false : handleSubscribe()}
+                    >   {
+                            t('buttons.Subscribe_now')
+                        }
                     </Button>
                 </Box>
                 <Box mb={2}>

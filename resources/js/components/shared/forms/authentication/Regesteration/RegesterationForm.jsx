@@ -15,8 +15,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { selectedDirection } from "@/store/slices/langSlice";
 import { GoogleIcon } from "../../../icons/GoogleIcon";
-// import CircleClipLoader from "../../../Alerts/Loader/CircleClipLoader";
-
+import CircleClipLoader from "../../../Alerts/Loader/CircleClipLoader";
 
 export const RegesterationForm = () => {
 
@@ -177,12 +176,11 @@ export const RegesterationForm = () => {
                     fullWidth
                     onClick={() => processing ? false : handleSubmit()}
                 >
-                    {/* {processing ?
+                    {processing ?
                         <CircleClipLoader />
                         :
                         t('buttons.Create My Account')
-                    } */}
-                   { t('buttons.Create My Account')}
+                    }
                 </Button>
             </Box>
         </form>

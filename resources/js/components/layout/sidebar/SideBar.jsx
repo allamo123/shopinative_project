@@ -33,7 +33,7 @@ const SideBar = ({ open, SidebarNavigation, MainSidebarLinks }) => {
                         [classes.hide]: !open
                     })}>
 
-                        <Logo logo="logo.png" width={185} />
+                        <Logo logo="logo.svg" size={185} />
 
                     </div>
                     <div className={clsx(classes.icon, {

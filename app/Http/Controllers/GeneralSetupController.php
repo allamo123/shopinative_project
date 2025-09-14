@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -71,7 +70,6 @@ class GeneralSetupController extends Controller
 
             $this->shop_setting->insert($setting_data);
 
-
             $central->commit();
             $tenant->commit();
 
@@ -79,7 +77,6 @@ class GeneralSetupController extends Controller
 
             $central->rollBack();
             $tenant->rollBack();
-            // dd($th);
 
             Log::error('Store method failed', [
                 'exception' => $th,
