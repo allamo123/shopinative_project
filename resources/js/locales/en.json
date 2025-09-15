@@ -60,7 +60,8 @@
       "Customers": "Customers",
       "Insights": "Insights",
       "Invoice": "Invoice",
-      "Invoices": "Invoices"
+      "Invoices": "Invoices",
+      "Store": "Store"
     },
     "toolTips": {
         "Add_new_category": "Add New Category",

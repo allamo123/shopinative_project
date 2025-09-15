@@ -57,7 +57,8 @@
         "Customers": "العملاء",
         "Insights": "الإحصائيات",
         "Invoice": "فاتورة",
-        "Invoices": "فواتير"
+        "Invoices": "فواتير",
+        "Store": "المتجر"
     },
     "labels": {
         "Name": "الاسم",

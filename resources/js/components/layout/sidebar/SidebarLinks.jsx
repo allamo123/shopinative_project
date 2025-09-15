@@ -1,5 +1,4 @@
 import StoreIcon from '@material-ui/icons/Store';
-import SpeedIcon from '@material-ui/icons/Speed';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import WebIcon from '@material-ui/icons/Web';
 import HomeIcon from '@material-ui/icons/Home';
@@ -10,6 +9,7 @@ import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import ReceiptIcon from '@material-ui/icons/Receipt';
+import StorefrontIcon from '@material-ui/icons/Storefront';
 
 export const SettingsNavigationLinks = [
     {
@@ -41,51 +41,82 @@ export const MainSidebar = [
             {
                 label : 'Orders',
                 icon: <LocalMallIcon fontSize='medium' />,
-                href: 'temp',
-                hasParameter: false,
                 sub: [
                     {
-                        label: 'hello'
-                    }
+                        label: 'all orders'
+                    },
+                    {
+                        label: 'new order'
+                    },
+                    {
+                        label: 'abandoned carts'
+                    },
                 ]
             },
             {
                 label : 'Products',
                 icon: <WeekendIcon fontSize='medium' />,
-                href: 'temp',
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'hello'
-                    }
+                        label: 'all products'
+                    },
+                    {
+                        label: 'new product'
+                    },
+                    {
+                        label: 'categories'
+                    },
+                    {
+                        label: 'reviews'
+                    },
+                    {
+                        label: 'inventory'
+                    },
                 ]
             },
             {
                 label : 'Up_sells',
                 icon: <StyleIcon fontSize='medium' />,
-                href: 'temp',
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'hello'
+                        label: 'all up sells'
+                    },
+                    {
+                        label: 'new sells'
                     }
                 ]
             },
             {
                 label : 'Coupons',
                 icon: <LoyaltyIcon fontSize='medium' />,
-                href: 'temp',
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'hello'
-                    }
+                        label: 'all coupons'
+                    },
+                    {
+                        label: 'new coupon'
+                    },
                 ]
             },
             {
                 label : 'Customers',
                 icon: <PeopleAltIcon fontSize='medium' />,
-                href: 'temp',
+                hasParameter: false,
+                sub: [
+                    {
+                        label: 'all customers'
+                    },
+                    {
+                        label: 'new customer'
+                    },
+                ]
+            },
+            {
+                label : 'Store',
+                icon: <StorefrontIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
@@ -96,7 +127,6 @@ export const MainSidebar = [
             {
                 label : 'Insights',
                 icon: <TrendingUpIcon fontSize='medium' />,
-                href: 'temp',
                 hasParameter: false,
                 sub: [
                     {
@@ -107,7 +137,6 @@ export const MainSidebar = [
             {
                 label : 'Invoices',
                 icon: <ReceiptIcon fontSize='medium' />,
-                href: 'temp',
                 hasParameter: false,
                 sub: [
                     {
