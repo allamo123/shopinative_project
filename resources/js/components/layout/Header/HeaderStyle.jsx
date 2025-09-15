@@ -64,7 +64,7 @@ export const RtlHeaderStyle = makeStyles(() => ({
         height: 62,
         justifyContent: 'center',
         boxShadow: 'none !important',
-        borderBottom: '1px solid #ddd !important'
+        borderBottom: '1px solid #dddddd87 !important'
     },
     brand: {
         width: 185,

@@ -6,7 +6,6 @@ export const SideBarStyles = makeStyles((theme) => ({
 
   menuButton: {
     marginRight: 0,
-    // color: '#fff'
   },
   logo: {
     flexGrow: 1,
@@ -30,6 +29,7 @@ export const SideBarStyles = makeStyles((theme) => ({
     height: '100vh',
     position: 'fixed',
     top: 0,
+    zIndex: 9999,
     boxShadow: '2px 1px 5px rgb(100 116 139 / 12%)',
   },
   innerDrawer : {
@@ -64,8 +64,7 @@ export const SideBarStyles = makeStyles((theme) => ({
     color: '#FFFFFF',
     boxShadow: '0px 1px 5px rgb(100 116 139 / 12%)',
     minHeight: 62,
-    // marginBottom: theme.spacing(2),
-    // ...theme.mixins.toolbar,
+    borderBottom: '1px solid #ddddddcf'
   },
 }));
 
@@ -73,7 +72,6 @@ export const RtlSideBarStyles = makeStyles((theme) => ({
 
   menuButton: {
     marginRight: 0,
-    // color: '#fff'
   },
   logo: {
     flexGrow: 1,
@@ -97,6 +95,7 @@ export const RtlSideBarStyles = makeStyles((theme) => ({
     height: '100vh',
     position: 'fixed',
     top: 0,
+    zIndex: 9999,
     boxShadow: '-2px 1px 5px rgb(100 116 139 / 12%)',
   },
   innerDrawer : {
@@ -135,6 +134,6 @@ export const RtlSideBarStyles = makeStyles((theme) => ({
     boxShadow: '0px 1px 5px rgb(100 116 139 / 12%)',
     minHeight: 62,
     padding: theme.spacing(4, 1.2),
-    // ...theme.mixins.toolbar,
+    borderBottom: '1px solid #ddddddcf',
   },
 }));

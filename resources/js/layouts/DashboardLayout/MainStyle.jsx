@@ -34,16 +34,14 @@ export const MainStyle = makeStyles((theme) => ({
         color: '#fff'
     },
     content: {
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
         width: '100%',
         marginLeft: 'auto',
         transition: '.2s',
+        paddingTop: 42,
         paddingLeft: 262,
     },
     middleContent: {
-        padding: '8px 52px',
+        padding: '8px 52px 60px',
     },
     maxWidth: {
         paddingLeft: 50,
@@ -102,17 +100,14 @@ export const RtlMainStyle = makeStyles((theme) => ({
         color: '#fff'
     },
     content: {
-        display: 'flex',
-        flex: '1 1 auto',
-        flexDirection: 'column',
         width: '100%',
         marginLeft: 'auto',
         transition: '.2s',
-        paddingRight:262
+        paddingRight:262,
+        paddingTop: 42
     },
     middleContent: {
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
+        padding: '8px 52px 60px',
     },
     maxWidth: {
         paddingRight:50

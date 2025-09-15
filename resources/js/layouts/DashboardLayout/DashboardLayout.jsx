@@ -32,7 +32,7 @@ const DashboardLayout = ({ hideSideBar, children, head, title, BredcrumbLinks, T
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
 
     const { t } = useTranslation();
 
@@ -60,129 +60,127 @@ const DashboardLayout = ({ hideSideBar, children, head, title, BredcrumbLinks, T
     }, []);
 
     return (
-            <Fragment>
-                <Head title={`Shopinative | ${head}`} />
-                <div style={{ height: '100vh' }}>
-                    {/********header**********/}
+        <Fragment>
+            <Head title={`Shopinative | ${head}`} />
+            {/********header**********/}
 
-                    {!hideSideBar ?
-                        <Header open={open} setOpen={setOpen} />
-                        :
-                        <HeaderTwo />
-                    }
+            {!hideSideBar ?
+                <Header open={open} setOpen={setOpen} />
+                :
+                <HeaderTwo />
+            }
 
-                    {/********Sidebar**********/}
-                    {!hideSideBar &&
-                        <SideBar
-                            open={open}
-                            SidebarNavigation={SidebarNavigation}
-                            isLoading={isLoading}
-                            MainSidebarLinks={MainSidebar}
-                        />
-                    }
+            {/********Sidebar**********/}
+            {!hideSideBar &&
+                <SideBar
+                    open={open}
+                    SidebarNavigation={SidebarNavigation}
+                    isLoading={isLoading}
+                    MainSidebarLinks={MainSidebar}
+                />
+            }
 
-                    {/********page title & bredcrumb section*****/}
-                    {title &&
+            {/********page title & bredcrumb section*****/}
+            {title &&
+                <Box
+                    className={clsx(classes.dynamicPageTitle, {
+                        [classes.titlePadding]: !open
+                    })}
+                    mb={3}
+                    sx={{
+                        pt: 3,
+                        pb: 3,
+                        backgroundColor: '#92136c',
+                        borderBottom: '1px solid rgb(227 227 227)',
+                        borderTop: '1px solid rgb(227 227 227)'
+                    }}
+                >
+                    <Grid container justifyContent="space-between" alignItems="center" className={classes.pageTitleHeader} >
+                        <div className={classes.pageTitle}>
+                            <Typography className={classes.Capitalize} variant="h6">
+                                {type !== 'show_tender' ?
+                                    t('layouts.' + title)
+                                    :
+                                    `${t('layouts.Tender')} #${target.ref} ${t('layouts.Shipment from')} ${direction === 'ltr' ? target.pickup_location.city.english_name : target.pickup_location.city.arabic_name} ${t('layouts.to')} ${direction === 'ltr' ? target.city.english_name : target.city.arabic_name}`
+                                }
+                            </Typography>
+                        </div>
+                        {TitleRightContent &&
+                            <ShipmentStatusLabel TitleStatus={TitleRightContent.status} />
+                        }
+                        {BredcrumbLinks &&
+                            <Bcrumbs links={BredcrumbLinks} active={ActiveBredcrumb} title={title} />
+                        }
+                    </Grid>
+                </Box>}
+
+            {extraLinks &&
+                <Box
+                    className={clsx(classes.dynamicPageTitle, {
+                        [classes.titlePadding]: !open
+                    })}
+                    sx={{
+                        backgroundColor: 'rgb(9 21 26)',
+                        borderBottom: '1px solid rgb(227 227 227)'
+                    }}
+                >
+                    <Container>
                         <Box
-                            className={clsx(classes.dynamicPageTitle, {
-                                [classes.titlePadding]: !open
-                            })}
-                            mb={3}
                             sx={{
-                                pt: 3,
-                                pb: 3,
-                                backgroundColor: '#92136c',
-                                borderBottom: '1px solid rgb(227 227 227)',
-                                borderTop: '1px solid rgb(227 227 227)'
+                                display: 'flex',
                             }}
                         >
-                            <Grid container justifyContent="space-between" alignItems="center" className={classes.pageTitleHeader} >
-                                <div className={classes.pageTitle}>
-                                    <Typography className={classes.Capitalize} variant="h6">
-                                        {type !== 'show_tender' ?
-                                            t('layouts.' + title)
-                                            :
-                                            `${t('layouts.Tender')} #${target.ref} ${t('layouts.Shipment from')} ${direction === 'ltr' ? target.pickup_location.city.english_name : target.pickup_location.city.arabic_name} ${t('layouts.to')} ${direction === 'ltr' ? target.city.english_name : target.city.arabic_name}`
-                                        }
-                                    </Typography>
-                                </div>
-                                {TitleRightContent &&
-                                    <ShipmentStatusLabel TitleStatus={TitleRightContent.status} />
-                                }
-                                {BredcrumbLinks &&
-                                    <Bcrumbs links={BredcrumbLinks} active={ActiveBredcrumb} title={title} />
-                                }
-                            </Grid>
-                        </Box>}
-
-                    {extraLinks &&
-                        <Box
-                            className={clsx(classes.dynamicPageTitle, {
-                                [classes.titlePadding]: !open
-                            })}
-                            sx={{
-                                backgroundColor: 'rgb(9 21 26)',
-                                borderBottom: '1px solid rgb(227 227 227)'
-                            }}
-                        >
-                            <Container>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
+                            {extraLinks.map(({ label, href, current }, index) =>
+                                <Button
+                                    key={index}
+                                    classes={{
+                                        colorInherit: classes.buttonTextColor,
+                                        label: classes.buttonLabel,
+                                        text: classes.buttonTextType,
                                     }}
+                                    className={clsx(classes.buttonTextType, {
+                                        [classes.activeBtnLink]: current
+                                    })}
+                                    onClick={() => Inertia.visit(href)}
+                                    color="inherit"
+                                    variant="text"
                                 >
-                                    {extraLinks.map(({ label, href, current }, index) =>
-                                        <Button
-                                            key={index}
-                                            classes={{
-                                                colorInherit: classes.buttonTextColor,
-                                                label: classes.buttonLabel,
-                                                text: classes.buttonTextType,
-                                            }}
-                                            className={clsx(classes.buttonTextType, {
-                                                [classes.activeBtnLink]: current
-                                            })}
-                                            onClick={() => Inertia.visit(href)}
-                                            color="inherit"
-                                            variant="text"
-                                        >
-                                            {t('layouts.' + label)}
-                                        </Button>
-                                    )}
-                                </Box>
-                            </Container>
-                        </Box>}
+                                    {t('layouts.' + label)}
+                                </Button>
+                            )}
+                        </Box>
+                    </Container>
+                </Box>}
 
-                    {/******main content******/}
-                    <main className={clsx(classes.content, {
-                        [classes.maxWidth]: !open,
-                        [classes.noSideBarContent]: hideSideBar
-                    })}>
+            {/******main content******/}
+            <main className={clsx(classes.content, {
+                [classes.maxWidth]: !open,
+                [classes.noSideBarContent]: hideSideBar
+            })}>
 
-                        {/********Content Area**********/}
-                        <Container className={classes.middleContent}>
+                {/********Content Area**********/}
+                <Container className={classes.middleContent}>
 
-                            {isLoading &&
-                                <Box sx={{ position: 'relative', height: '88vh' }}>
-                                    <Loader spinner={true}>
-                                        <Typography variant="subtitle2">{t('layouts.Please be patient')}</Typography>
-                                    </Loader>
-                                </Box>
-                            }
+                    {isLoading &&
+                        <Box sx={{ position: 'relative', height: '88vh' }}>
+                            <Loader spinner={true}>
+                                <Typography variant="subtitle2">{t('layouts.Please be patient')}</Typography>
+                            </Loader>
+                        </Box>
+                    }
 
 
-                            <Box style={isLoading ? { display: 'none', position: 'relative' } : { display: 'block', marginBottom: 15 }}>
-                                {children}
-                            </Box>
+                    <Box style={isLoading ? { display: 'none', position: 'relative' } : { display: 'block', marginBottom: 15 }}>
+                        {children}
+                    </Box>
 
-                            <Footer sideBarStatus={open} color="#111" />
-                        </Container>
+                </Container>
 
 
-                        <FlashMsg flashMsg={flashMsg} />
-                    </main>
-                </div>
-            </Fragment>
+                <Footer sideBarStatus={open} color="#111" />
+                <FlashMsg flashMsg={flashMsg} />
+            </main>
+        </Fragment>
     );
 };
 export default DashboardLayout;

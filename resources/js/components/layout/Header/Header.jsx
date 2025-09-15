@@ -29,12 +29,12 @@ export const Header = ({ open, setOpen }) => {
 
     return (
         <AppBar className={classes.AppBar}
-            position="static"
+            position="fixed"
         >
             <div className={clsx(classes.root, {
                 [classes.maxWidth]: !open
             })}>
-                <Box sx={{display: 'flex', alignItems: 'center', flexGrow:1}}>
+                <Box sx={{display: 'flex', alignItems: 'center', flexGrow:1, marginInlineStart: 4.5}}>
                     <IconButton  onClick={() => setOpen(!open)}>
                         <MenuIcon fontSize="medium" />
                     </IconButton>

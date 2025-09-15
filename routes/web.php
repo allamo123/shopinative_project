@@ -21,6 +21,10 @@ foreach (config('tenancy.central_domains') as $domain) {
     });
 }
 
+Route::get('temp', function() {
+    dd(0);
+})->name('temp');
+
 // use App\Jobs\BuildMobileApp;
 
 // Route::get('test-build-mobile-app', function () {

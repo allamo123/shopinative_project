@@ -19,7 +19,7 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         transition: 'all .2s',
         cursor: 'pointer',
         alignItems: 'flex-start !important',
-        columnGap: 4,
+        columnGap: 15,
         '&:hover':{
             transition: 'all .3s',
             '& .MuiTypography-root': {
@@ -59,6 +59,7 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
        textAlign: 'justify',
        marginBottom: '0 !important',
        marginTop: '0 !important',
+       fontWeight: '500 !important',
     },
     activeText: {
         color: '#fff',
@@ -108,9 +109,14 @@ export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
        textTransform: 'capitalize',
        color: theme.palette.text.primary,
        textAlign: 'justify',
+       marginBottom: '0 !important',
+       marginTop: '0 !important',
+       fontWeight: '500 !important',
+       fontSize: '1.08rem !important'
     },
     activeText: {
         color: '#121212',
+        fontWeight: '800 !important',
     },
     IconButton: {
         backgroundColor: theme.palette.secondary.main,

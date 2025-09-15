@@ -1,12 +1,10 @@
 import React from "react"
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { memo } from "react";
-import { selectedDirection } from "../../../store/slices/langSlice";
-import { useSelector } from "react-redux";
 
 const useStyle = makeStyles((theme) => ({
     footer: (props) => ({
-        position: 'absolute',
+        position: props.color === '#fff' ? 'absolute' : 'unset',
         bottom: 0,
         left: 0,
         width: '100%',
@@ -17,30 +15,7 @@ const useStyle = makeStyles((theme) => ({
         zIndex: -1,
         color: '#111111',
         transition: 'all .3s',
-        paddingLeft: props.sideBarStatus ? 262 : 53,
-        borderTop: '1px solid #ddd'
-    }),
-    appName: {
-        color: theme.palette.primary.main,
-        fontWeight: 600,
-    }
-}));
-
-const RtlStyle = makeStyles((theme) => ({
-    footer: (props) => ({
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        paddingTop:15,
-        paddingBottom: 15,
-        textAlign: 'center',
-        fontSize: '0.8rem',
-        zIndex: -1,
-        color: '#111111',
-        transition: 'all .3s',
-        paddingRight: props.sideBarStatus ? 262 : 53,
-        borderTop: '1px solid #ddd'
+        zIndex: 2
     }),
     appName: {
         color: theme.palette.primary.main,
@@ -51,9 +26,7 @@ const RtlStyle = makeStyles((theme) => ({
 
 const Footer = memo(({ color, sideBarStatus }) => {
 
-    const direction = useSelector(selectedDirection);
-
-    const classes = direction === 'rtl' ? RtlStyle({sideBarStatus}) : useStyle({sideBarStatus});
+    const classes = useStyle({sideBarStatus, color});
 
     return (
         <Box className={classes.footer}>

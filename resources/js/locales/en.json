@@ -53,8 +53,14 @@
       "Get_started_bussiness": "Let’s Get Started And Bring Your Business To Life!",
       "Logo_and_icon": "Logo & Icon",
       "Color_pallete": "Color Palette",
-
-      "General_configurations": "General Configurations"
+      "General_configurations": "General Configurations",
+      "Orders": "Orders",
+      "Up_sells": "Up Sells",
+      "Coupons": "Coupons",
+      "Customers": "Customers",
+      "Insights": "Insights",
+      "Invoice": "Invoice",
+      "Invoices": "Invoices"
     },
     "toolTips": {
         "Add_new_category": "Add New Category",
