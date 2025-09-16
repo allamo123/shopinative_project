@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name') }}</title>
-
     <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- PNG icons for browsers and pinned tabs -->
@@ -32,10 +30,12 @@
 
     <!-- theme color for mobile browsers -->
     <meta name="theme-color" content="#0a0a0a" />
+
     @viteReactRefresh
     @inertiaHead
     @routes
-    @vite('resources/js/app.js');
+    @vite('resources/js/app.js')
+
 
     <style>
         * {

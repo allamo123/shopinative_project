@@ -11,7 +11,9 @@ class AuthenticationController extends Controller
 {
     public function showLoginForm()
     {
-        return Inertia::render('auth.login');
+        return Inertia::render('auth.login', [
+            "tenant" => tenant()
+        ]);
     }
 
     public function showRegistrationForm(Request $request)

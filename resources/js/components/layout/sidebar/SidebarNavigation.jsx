@@ -18,7 +18,6 @@ import {
     SideBarNavigationStyle,
     RtLSideBarNavigationStyle
 } from "./SideBarNavigationStyle";
-import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import "react-perfect-scrollbar/dist/css/styles.css";
@@ -119,8 +118,20 @@ export const SidebarNavigation = ({ links, id, open }) => {
                 </List>
 
                 {sub && (
-                    <Collapse in={isOpen} timeout="auto" unmountOnExit sx={{ background: '#f5f5f5' }}>
-                        <List className={classes.submenuContainer} component="div" disablePadding>
+                    <Collapse
+                        in={isOpen}
+                        className={open ? '' : classes.flySubMenu}
+                        timeout="auto"
+                        orientation={open ? 'vertical' : 'horizontal'}
+                        unmountOnExit
+                        sx={{ background: '#f5f5f5' }}
+                    >
+                        <List
+                            className={classes.submenuContainer}
+                            component="div"
+                            disablePadding
+                            sx={!open ? {width: 200, padding: '0 8px !important'} : {}}
+                        >
                             {sub.map((child, i) => (
                                 <ListItem
                                     className={clsx(classes.link, classes.subItem, {
@@ -149,7 +160,7 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                             {child.icon}
                                         </ListItemIcon>
                                     )}
-                                    {open && (
+
                                         <ListItemText
                                             primary={t("layouts.sidebar." + child.label)}
                                             primaryTypographyProps={{
@@ -161,7 +172,7 @@ export const SidebarNavigation = ({ links, id, open }) => {
                                                 }
                                             }}
                                         />
-                                    )}
+
                                 </ListItem>
                             ))}
                         </List>
@@ -175,7 +186,7 @@ export const SidebarNavigation = ({ links, id, open }) => {
         <SimpleBar ref={scroll} className={classes.scroll} datadata-simplebar-direction={direction}>
             {links.map(({ title, menu }, index) => (
                 <Box key={index} sx={{ maxWidth: "100%", height: "100%" }}>
-                    <MenuList classes={{ root: classes.ul }} disablePadding>
+                    <MenuList classes={{ root: open ? classes.ul : classes.shrinkSideUl }} disablePadding>
                         {menu.map(
                             ({ title, label, icon, href, hasParameter, buttonHref, sub }, i) => {
                                 const isLast = i === menu.length - 1;

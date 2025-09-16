@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-import { Box, Button, Grid, makeStyles, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Grid, InputAdornment, makeStyles, TextField, Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectedDirection } from "@/store/slices/langSlice";
 import { RtlLabelStyle } from "@/RtlLabelStyle";
@@ -12,7 +12,6 @@ import { ArrowDropDown } from "@material-ui/icons";
 
 const InformationsForm = ({ currencies, industries }) => {
 
-    console.log(industries);
     const { t } = useTranslation();
 
     const { app } = usePage().props;
@@ -161,6 +160,12 @@ const InformationsForm = ({ currencies, industries }) => {
                     onChange={(event, newValue) => {
                         setData('store_currency', newValue ? newValue.code : '');
                     }}
+                    renderOption={(option) => (
+                         <Box sx={{display: 'flex', gridColumnGap: 8, alignItems: 'center'}}>
+                            <img src={`${window.location.origin}/${option.image}`} width={32}/>
+                            {option.name} ({option.code})
+                        </Box>
+                    )}
                     renderInput={(params) => (
                         <TextField
                         {...params}
@@ -170,6 +175,14 @@ const InformationsForm = ({ currencies, industries }) => {
                         error={!!errors.store_currency}
                         required
                         classes={direction === 'rtl' ? { root: classes.rootInput } : {}}
+                        InputProps={{
+                            ...params.InputProps,
+                            startAdornment: data.store_currency ? (
+                            <InputAdornment position="start">
+                                    <img src={window.location.origin+'/'+currencies.find((currency) => currency.code === data.store_currency).image} width={32} />
+                            </InputAdornment>
+                            ) : null,
+                        }}
                         />
                     )}
                     />

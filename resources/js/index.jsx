@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { render } from 'react-dom';
-import { createInertiaApp } from '@inertiajs/inertia-react';
+import { createInertiaApp, Head } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import { Provider, useSelector } from 'react-redux';
 import store from './store';
@@ -37,7 +37,7 @@ const RootWrapper = ({ children }) => {
 };
 
 createInertiaApp({
-
+    title: title => `${title} - shopinative`,
     resolve: async (name) => {
         const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true });
 

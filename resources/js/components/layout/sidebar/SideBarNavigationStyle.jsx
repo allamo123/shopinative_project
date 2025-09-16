@@ -7,6 +7,9 @@ const baseStyles = (theme) => ({
         backgroundColor: "#fff",
         padding: "15px 10px !important",
     },
+    shrinkSideUl: {
+        padding: '0 !important',
+    },
     groupTitle: {
         textTransform: "capitalize",
     },
@@ -47,6 +50,17 @@ const baseStyles = (theme) => ({
     shrinkSide: {
         padding: "10px !important",
         textAlign: "center",
+        borderRadius: '0 !important',
+        marginTop: '0 !important'
+    },
+    flySubMenu: {
+        position: 'fixed !important',
+        left: 52,
+        width: 200,
+        backgroundColor: '#f5f5f5 !important',
+        padding: '15px 0',
+        border: '1px solid #ddd',
+        borderRadius: '0 12px 12px 0',
     },
     linkText: {
         fontSize: "1.08em !important",
@@ -95,6 +109,16 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         maxHeight: '100vh',
         height: '90%',
     },
+    flySubMenu: {
+        position: 'fixed !important',
+        left: 53,
+        width: 200,
+        backgroundColor: '#f5f5f5 !important',
+        padding: '15px 0',
+        border: '1px solid #ddd',
+        borderRadius: '0 8px 8px 0',
+        boxShadow: theme.shadows[1],
+    },
 }));
 
 export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
@@ -120,5 +144,15 @@ export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
         fontSize: "14px !important",
         fontWeight: "600 !important",
         textTransform: "capitalize !important",
+    },
+    flySubMenu: {
+        position: 'fixed !important',
+        right: 53,
+        width: 200,
+        backgroundColor: '#f5f5f5 !important',
+        padding: '15px 0',
+        border: '1px solid #ddd',
+        borderRadius: '8px 0 0 8px',
+        boxShadow: theme.shadows[1]
     },
 }));

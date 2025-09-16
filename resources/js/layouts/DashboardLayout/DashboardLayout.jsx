@@ -1,24 +1,18 @@
 import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import clsx from "clsx";
 import { Container, Typography, ThemeProvider, CssBaseline, Grid, Box, Button } from "@material-ui/core";
-import { usePage } from "@inertiajs/inertia-react";
-import { Head } from "@inertiajs/inertia-react";
+import { Head, usePage } from "@inertiajs/inertia-react";
 import { SidebarNavigation } from "../../components/layout//sidebar/SidebarNavigation";
 import { Inertia } from "@inertiajs/inertia";
 import SideBar from "../../components/layout/sidebar/SideBar";
 import Loader from "@/components/shared/loader/Loader";
 import { Header } from "./../../components/layout/Header/Header";
 import { MainStyle, RtlMainStyle } from "./MainStyle";
-import { theme } from "@/theme";
 import { MainSidebar } from "../../components/layout/sidebar/SidebarLinks";
 import Footer from '../../components/layout/Footer/Footer'
 import { selectedDirection, setLangDirection } from "@/store/slices/langSlice";
 import { useTranslation } from "react-i18next";
-import createCache from "@emotion/cache";
 import { useDispatch, useSelector } from "react-redux";
-import { CacheProvider } from "@emotion/react";
-import { prefixer } from "stylis";
-import stylisRTLPlugin from "stylis-plugin-rtl";
 import { HeaderTwo } from "../../components/layout/Header/HeaderTwo";
 import { FlashMsg } from "../../components/shared/Alerts/FlashMsg/FlashMsg";
 
@@ -61,7 +55,6 @@ const DashboardLayout = ({ hideSideBar, children, head, title, BredcrumbLinks, T
 
     return (
         <Fragment>
-            <Head title={`Shopinative | ${head}`} />
             {/********header**********/}
 
             {!hideSideBar ?

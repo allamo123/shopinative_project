@@ -5,9 +5,9 @@ import { Box, Button, makeStyles } from "@material-ui/core";
 
 const Style = makeStyles((theme) => ({
     langname: {
-        [theme.breakpoints.up('md')]: {
-            display: 'block',
-        },
+        display: 'flex',
+        columnGap: 5,
+        alignItems:'center',
         [theme.breakpoints.down('md')]: {
            display: 'none',
         },
@@ -21,9 +21,9 @@ const LanguageSwitch = () => {
 
     const handleChangeClick = () => {
         setSelectedLanguage(
-            selectedLanguage.code === 'ar' ? 
-                {code: 'en', name: 'english'} 
-                : 
+            selectedLanguage.code === 'ar' ?
+                {code: 'en', name: 'english'}
+                :
                 {code: 'ar', name: 'عربي'}
         );
 
@@ -34,13 +34,18 @@ const LanguageSwitch = () => {
 
     return (
         <Button
-         dir="rtl"
-         endIcon={<img src={i18next.language === 'ar' ? "/images/english_flag.png" : "/images/eg_flag.png"} width={22} style={{margin: '0 5px'}}/>} 
-         size="small" 
+         dir="ltr"
+         size="small"
          variant="text"
          onClick={() => handleChangeClick()}
         >
             <Box className={classes.langname}>
+                <img
+                    src={i18next.language === 'ar' ?
+                        "/images/icons/countries/british.png"
+                        : "/images/icons/countries/egypt.png"}
+                    width={25}
+                />
                 {i18next.language === 'ar' ? 'English' : 'Arabic'}
             </Box>
         </Button>

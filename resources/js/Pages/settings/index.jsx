@@ -34,7 +34,6 @@ const Settings = ({ currencies, indusries }) => {
 
 Settings.layout = page => (
     <Dashboard
-        title="Bussiness_configurations"
         children={page}
         hideSideBar={true}
     />

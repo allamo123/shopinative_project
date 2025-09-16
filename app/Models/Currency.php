@@ -13,6 +13,7 @@ class Currency extends Model
         'name',
         'code',
         'symbol',
+        'image',
         'is_active',
     ];
 }

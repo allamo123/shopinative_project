@@ -12,7 +12,8 @@ export const theme = createTheme({
         // },
         body: {
           height: '100%',
-          width: '100%'
+          width: '100%',
+          lineHeight: 0,
         },
       },
     },

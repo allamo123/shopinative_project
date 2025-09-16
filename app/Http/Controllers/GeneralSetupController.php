@@ -24,7 +24,7 @@ class GeneralSetupController extends Controller
     public function index()
     {
         $currencies = Currency::query()
-            ->select('name', 'code', 'symbol')
+            ->select('name', 'code', 'symbol', 'image')
             ->where('is_active', true)
             ->get();
 
