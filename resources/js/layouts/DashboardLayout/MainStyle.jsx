@@ -55,7 +55,6 @@ export const MainStyle = makeStyles((theme) => ({
         textAlign: 'center',
         color: '#f7fbfc',
         fontSize: '0.8rem',
-        zIndex: 2,
     },
 }));
 

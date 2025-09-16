@@ -10,6 +10,8 @@ import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import ReceiptIcon from '@material-ui/icons/Receipt';
 import StorefrontIcon from '@material-ui/icons/Storefront';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import MobileFriendlyIcon from '@mui/icons-material/MobileFriendly';
 
 export const SettingsNavigationLinks = [
     {
@@ -33,116 +35,167 @@ export const MainSidebar = [
     {
         menu:[
             {
-                label : 'Home',
+                label : 'home',
                 icon: <HomeIcon fontSize='medium' />,
                 href: 'tenant.home',
                 hasParameter: false
             },
             {
-                label : 'Orders',
+                label : 'orders',
                 icon: <LocalMallIcon fontSize='medium' />,
                 sub: [
                     {
-                        label: 'all orders'
+                        label: 'all_orders',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'new order'
+                        label: 'new_order',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'abandoned carts'
+                        label: 'abandoned_carts',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                 ]
             },
             {
-                label : 'Products',
+                label : 'products',
                 icon: <WeekendIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'all products'
+                        label: 'all_products',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
                     },
                     {
-                        label: 'new product'
+                        label: 'new_product',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'categories'
+                        label: 'categories',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'reviews'
+                        label: 'reviews',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'inventory'
+                        label: 'inventory',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                 ]
             },
             {
-                label : 'Up_sells',
+                label : 'up_sells',
                 icon: <StyleIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'all up sells'
+                        label: 'all_up_sells',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'new sells'
+                        label: 'new_sells',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     }
                 ]
             },
             {
-                label : 'Coupons',
+                label : 'coupons',
                 icon: <LoyaltyIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'all coupons'
+                        label: 'all_coupons',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'new coupon'
+                        label: 'new_coupon',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                 ]
             },
             {
-                label : 'Customers',
+                label : 'customers',
                 icon: <PeopleAltIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'all customers'
+                        label: 'all_customers',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                     {
-                        label: 'new customer'
+                        label: 'new_customer',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
                     },
                 ]
             },
             {
-                label : 'Store',
+                label : 'store',
                 icon: <StorefrontIcon fontSize='medium' />,
                 hasParameter: false,
                 sub: [
                     {
-                        label: 'hello'
-                    }
+                        label: 'theme',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
+                    },
+                    {
+                        label: 'themes',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
+                    },
+                    {
+                        label: 'menus',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
+                    },
+                    {
+                        label: 'languages',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
+                    },
+                    {
+                        label: 'pages',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+
+                    },
+                    {
+                        label: 'domains',
+                        icon: <ArrowCircleRightIcon fontSize='small' />
+                    },
                 ]
             },
             {
-                label : 'Insights',
+                label : 'mobile_app',
+                icon: <MobileFriendlyIcon fontSize='medium' />,
+                href: 'temp',
+                hasParameter: false,
+            },
+            {
+                label : 'insights',
                 icon: <TrendingUpIcon fontSize='medium' />,
+                href: 'temp',
                 hasParameter: false,
-                sub: [
-                    {
-                        label: 'hello'
-                    }
-                ]
             },
             {
-                label : 'Invoices',
+                label : 'invoices',
                 icon: <ReceiptIcon fontSize='medium' />,
+                href: 'temp',
                 hasParameter: false,
-                sub: [
-                    {
-                        label: 'hello'
-                    }
-                ]
             },
         ]
     },

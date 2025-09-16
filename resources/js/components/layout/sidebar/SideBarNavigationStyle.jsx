@@ -1,172 +1,124 @@
-import { colors, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
-export const SideBarNavigationStyle = makeStyles((theme) => ({
-    scroll: {
-        maxHeight: '87vh',
-    },
+const baseStyles = (theme) => ({
     ul: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#fff',
-        padding: '15px 6px !important'
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#fff",
+        padding: "15px 10px !important",
     },
     groupTitle: {
-        textTransform: 'capitalize'
+        textTransform: "capitalize",
     },
     link: {
         borderRadius: 21,
-        marginBottom: 8,
-        transition: 'all .2s',
-        cursor: 'pointer',
-        alignItems: 'center !important',
+        marginTop: 8,
+        transition: "all .2s",
+        cursor: "pointer",
+        alignItems: "center !important",
         columnGap: 15,
-        '&:hover':{
-            transition: 'all .3s',
-            color: theme.palette.primary.main,
-        }
+        [`&:hover:not($active)`]: {
+            transition: "all .3s",
+            backgroundColor: "#f5f5f5",
+            "& *": {
+                color: theme.palette.primary.main,
+            },
+        },
     },
     active: {
         backgroundColor: theme.palette.primary.light,
-        color: '#fff',
-        cursor: 'auto',
-        '& .MuiSvgIcon-root': {
-            color: '#fff'
+        color: "#fff",
+        cursor: "auto",
+        "& .MuiSvgIcon-root": {
+            color: "#fff",
         },
-        '&:hover' : {
-            '& .MuiTypography-root': {
-                color: '#fff',
+        "&:hover": {
+            "& .MuiTypography-root": {
+                color: "#fff",
             },
-        }
+        },
     },
     activeIcon: {
-        color: `#fff !important`
+        color: `#fff !important`,
     },
     ItemIcon: {
-        minWidth: '0 !important',
+        minWidth: "0 !important",
     },
     shrinkSide: {
-        padding: '10px !important',
-        textAlign: 'center'
+        padding: "10px !important",
+        textAlign: "center",
     },
     linkText: {
-       textTransform: 'capitalize',
-       color: theme.palette.text.primary,
-       textAlign: 'justify',
-       marginBottom: '0 !important',
-       marginTop: '0 !important',
-       fontWeight: '600 !important',
+        fontSize: "1.08em !important",
+        textTransform: "capitalize",
+        color: theme.palette.text.primary,
+        textAlign: "justify",
+        marginBottom: "0 !important",
+        marginTop: "0 !important",
+        fontWeight: "600 !important",
     },
     activeText: {
-        color: '#fff !important',
-        fontWeight: '800 !important',
+        color: "#fff !important",
+        fontWeight: "800 !important",
     },
     IconButton: {
         backgroundColor: theme.palette.primary.main,
-        color: '#fff',
+        color: "#fff",
         padding: 7,
-        '&:hover': {
+        "&:hover": {
             backgroundColor: theme.palette.primary.light,
-        }
+        },
     },
     submenuContainer: {
-        '& *': {
-            marginBottom: '0px'
+        padding: "0 20px !important",
+        "& *": {
+            marginBottom: "0px",
+            paddingBottom: "2px !important",
+            paddingTop: "0px !important",
         },
-        padding: '0 20px !important',
     },
     subText: {
-        fontSize: '13px !important',
-        textTransform: 'capitalize !important'
+        fontSize: "13px !important",
+        textTransform: "capitalize !important",
+        fontWeight: "600 !important",
     },
-    subeOpenActive: {
-        '& *': {
-            color: theme.palette.primary.main
-        }
-    }
+    submenuOpen: {
+        "& *": {
+            color: theme.palette.primary.main,
+        },
+    },
+});
+
+export const SideBarNavigationStyle = makeStyles((theme) => ({
+    ...baseStyles(theme),
+    scroll: {
+        maxHeight: '100vh',
+        height: '90%',
+    },
 }));
 
 export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
-        scroll: {
-        maxHeight: '87vh',
-    },
-    ul: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#fff',
-        padding: '15px 6px !important'
-    },
-    groupTitle: {
-        textTransform: 'capitalize'
-    },
-    link: {
-        borderRadius: 21,
-        marginBottom: 8,
-        transition: 'all .2s',
-        cursor: 'pointer',
-        alignItems: 'flex-end !important',
-        columnGap: 15,
-        '&:hover *':{
-            transition: 'all .3s',
-            color: theme.palette.primary.main,
+    ...baseStyles(theme),
+    scroll: {
+        maxHeight: '100vh',
+        height: '90%',
+        '& .simplebar-track': {
+            left: '0 !important',
+            right: 'unset !important'
         }
-    },
-    active: {
-        backgroundColor: theme.palette.primary.light,
-        color: '#fff',
-        cursor: 'auto',
-        '& .MuiSvgIcon-root': {
-            color: '#fff'
-        },
-        '&:hover' : {
-            '& .MuiTypography-root': {
-                color: '#fff',
-            },
-        }
-    },
-    activeIcon: {
-        color: `#fff !important`
-    },
-    ItemIcon: {
-        minWidth: '0 !important',
-    },
-    shrinkSide: {
-        padding: '10px !important',
-        textAlign: 'center'
     },
     linkText: {
-       fontSize: '1.08em !important',
-       textTransform: 'capitalize',
-       color: theme.palette.text.primary,
-       textAlign: 'justify',
-       marginBottom: '0 !important',
-       marginTop: '0 !important',
-       fontWeight: '600 !important',
-    },
-    activeText: {
-        color: '#fff !important',
-        fontWeight: '800 !important',
-    },
-    IconButton: {
-        backgroundColor: theme.palette.primary.main,
-        color: '#fff',
-        padding: 7,
-        '&:hover': {
-            backgroundColor: theme.palette.primary.light,
-        }
-    },
-    submenuContainer: {
-        '& *': {
-            marginBottom: '0px'
-        },
-        padding: '0 20px !important',
+        fontSize: "1em !important",
+        textTransform: "capitalize",
+        color: theme.palette.text.primary,
+        textAlign: "justify",
+        marginBottom: "0 !important",
+        marginTop: "0 !important",
+        fontWeight: "600 !important",
     },
     subText: {
-        fontSize: '13px !important',
-        textTransform: 'capitalize !important'
+        fontSize: "14px !important",
+        fontWeight: "600 !important",
+        textTransform: "capitalize !important",
     },
-    subeOpenActive: {
-        '& *': {
-            color: theme.palette.primary.main
-        }
-    }
 }));

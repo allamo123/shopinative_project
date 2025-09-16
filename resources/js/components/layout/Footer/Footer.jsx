@@ -12,7 +12,6 @@ const useStyle = makeStyles((theme) => ({
         paddingBottom: 15,
         textAlign: 'center',
         fontSize: '0.8rem',
-        zIndex: -1,
         color: '#111111',
         transition: 'all .3s',
         zIndex: 2
