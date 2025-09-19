@@ -15,7 +15,7 @@ const Settings = ({ currencies, indusries }) => {
     const { t } = useTranslation();
 
     return (
-        <Box sx={{width: '65%', margin: 'auto'}}>
+        <Box  pt={4} sx={{width: '65%', margin: 'auto'}}>
             <Card elevation={5}>
                 <CardHeader
                     title={`👋 ${t('layouts.Hi')} ${ user.first_name } ${ user.last_name },`}

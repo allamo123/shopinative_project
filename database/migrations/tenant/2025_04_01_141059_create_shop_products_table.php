@@ -14,38 +14,21 @@ return new class extends Migration
         Schema::create('shop_products', function (Blueprint $table) {
 
             $table->id();
-
-            $table->uuid('category_id');
-
-            $table->foreign('category_id')
-                  ->references('id')
-                  ->on('categories')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
-            $table->uuid('sub_category_id')->nullable();
-            $table->foreign('sub_category_id')
-                  ->references('id')
-                  ->on('categories')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
-
-            $table->unsignedBigInteger('offer_id')->nullable();
-            $table->foreign('offer_id')->references('id')->on('shop_offers')->onDelete('cascade')->onUpdate('cascade');
-
             $table->string('name');
             $table->string('slug');
             $table->tinyText('short_description');
             $table->text('full_description');
             $table->text('how_to_use')->nullable();
             $table->integer('stock');
-            $table->integer('sold_qty')->nullable();
-            $table->float('original_price', 10,2);
-            $table->float('sell_price', 10,2);
-            $table->float('discount_amount', 10,2)->default(0);
-            $table->float('customer_price', 10,2);
-            $table->float('profit', 10,2)->default(0);
-            $table->boolean('has_tax')->default(false);
+            $table->integer('sold_qty')->default(0);
+            $table->decimal('cost_price', 10, 2);
+            $table->decimal('sale_price', 10, 2);
+            $table->decimal('discount_amount', 10, 2)->default(0);
+            $table->decimal('final_price', 10, 2);
+            $table->decimal('profit', 10, 2)->default(0);
+            $table->string('sku')->nullable();
+            $table->boolean('is_featured')->default(false);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -55,6 +38,13 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('shop_products', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['sub_category_id']);
+            $table->dropForeign(['offer_id']);
+            $table->dropForeign(['brand_id']);
+        });
+
         Schema::dropIfExists('shop_products');
     }
 };

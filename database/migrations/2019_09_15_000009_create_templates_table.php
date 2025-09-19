@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('preview_url')->nullable();
+            $table->string('storage_path');
             $table->foreignId('industry_id')->constrained('industries')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('is_default')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

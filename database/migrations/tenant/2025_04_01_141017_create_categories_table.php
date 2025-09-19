@@ -12,16 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->text('description')->nullable();
             $table->enum('type', ['main', 'sub'])->default('main');
 
-            $table->uuid('category_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')
             ->onUpdate('CASCADE')->onDelete('CASCADE');
 
+            $table->integer('display_order')->default(0);
+
             $table->boolean('is_featured')->default(false);
+
+            $table->boolean('is_active')->default(true);
 
             $table->timestamps();
         });
@@ -32,6 +37,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+        });
+
         Schema::dropIfExists('categories');
     }
 };

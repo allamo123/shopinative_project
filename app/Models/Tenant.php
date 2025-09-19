@@ -67,4 +67,9 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         return $this->hasOne(Subscription::class, 'tenant_id')
                     ->where('active', true);
     }
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class);
+    }
 }

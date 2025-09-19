@@ -19,7 +19,7 @@ export const HeaderTwo = ({ isTransparent }) => {
     const classes = direction === 'ltr' ? HeaderStyle() : RtlHeaderStyle();
 
     return (
-        <AppBar elevation={4} position="static" color="inherit" style={{padding: '8px 52px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+        <AppBar elevation={4} position="fixed" color="inherit" style={{padding: '8px 52px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
             <Box>
                 <Logo logo="logo.svg" size={180} />
             </Box>

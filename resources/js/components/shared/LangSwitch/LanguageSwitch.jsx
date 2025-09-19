@@ -46,7 +46,7 @@ const LanguageSwitch = () => {
                         : "/images/icons/countries/egypt.png"}
                     width={25}
                 />
-                {i18next.language === 'ar' ? 'English' : 'Arabic'}
+                {i18next.language === 'ar' ? 'English' : 'عربي'}
             </Box>
         </Button>
     );

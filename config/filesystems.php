@@ -37,14 +37,20 @@ return [
             'throw' => false,
             'report' => false,
         ],
-        'media' => [
+        'central_media' => [
             'driver' => 'local',
-            'root'   => public_path('media'),
-            'url'    => env('APP_URL').'/media',
+            'root'   => storage_path('central_media'),
+            'url'    => env('APP_URL').'/central_media',
             'visibility' => 'public',
             'throw' => false,
         ],
-
+        'tenant_media' => [
+            'driver' => 'local',
+            'root'   => storage_path('tenant_media'),
+            'url'    => env('APP_URL').'/tenant_media',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

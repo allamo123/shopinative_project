@@ -15,4 +15,9 @@ class Industry extends Model
         'slug',
         'is_active'
     ];
+
+    public function tenants()
+    {
+        return $this->hasMany(Industry::class, 'industry_id');
+    }
 }

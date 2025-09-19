@@ -11,4 +11,5 @@ class ShopSetting extends Model
         'value',
         'type',
     ];
+
 }

@@ -32,7 +32,7 @@ const baseStyles = (theme) => ({
         color: '#fff'
     },
     middleContent: {
-        padding: '8px 52px 60px',
+        padding: '8px 52px 35px',
     },
     footer: {
         paddingTop:15,

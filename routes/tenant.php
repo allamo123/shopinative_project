@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
+use App\Http\Controllers\Tenant\Frontend\HomeController as BaseFrontendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,9 +52,17 @@ Route::middleware([
                 ->names('setup');
         });
 
-        Route::middleware(['isBussiness'])->group(function () {
-            // dashboard routes
+        Route::middleware(['isBussiness', 'storeDashboard'])->group(function () {
+            // shop store admin dashboard routes
             Route::get('/dashboard', [HomeController::class, 'index'])->name('tenant.home');
+        });
+    });
+
+    // shop store frontend routes
+    Route::middleware(['storeFrontend'])->group(function () {
+        Route::get('/', [BaseFrontendController::class, 'index'])->name('shop.frontend');
+        Route::prefix('shop')->group(function() {
+            Route::get('/products', [BaseFrontendController::class, 'showProducts'])->name('shop.products');
         });
     });
 });

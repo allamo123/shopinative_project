@@ -53,17 +53,8 @@ const baseStyles = (theme) => ({
         borderRadius: '0 !important',
         marginTop: '0 !important'
     },
-    flySubMenu: {
-        position: 'fixed !important',
-        left: 52,
-        width: 200,
-        backgroundColor: '#f5f5f5 !important',
-        padding: '15px 0',
-        border: '1px solid #ddd',
-        borderRadius: '0 12px 12px 0',
-    },
     linkText: {
-        fontSize: "1.08em !important",
+        fontSize: "16px !important",
         textTransform: "capitalize",
         color: theme.palette.text.primary,
         textAlign: "justify",
@@ -72,8 +63,11 @@ const baseStyles = (theme) => ({
         fontWeight: "600 !important",
     },
     activeText: {
-        color: "#fff !important",
-        fontWeight: "800 !important",
+        '& *': {
+            fontSize: '16px !important',
+            color: "#fff !important",
+            fontWeight: "600 !important",
+        }
     },
     IconButton: {
         backgroundColor: theme.palette.primary.main,
@@ -92,7 +86,7 @@ const baseStyles = (theme) => ({
         },
     },
     subText: {
-        fontSize: "13px !important",
+        fontSize: "14px !important",
         textTransform: "capitalize !important",
         fontWeight: "600 !important",
     },
@@ -117,7 +111,7 @@ export const SideBarNavigationStyle = makeStyles((theme) => ({
         padding: '15px 0',
         border: '1px solid #ddd',
         borderRadius: '0 8px 8px 0',
-        boxShadow: theme.shadows[1],
+        boxShadow: theme.shadows[12],
     },
 }));
 
@@ -132,7 +126,7 @@ export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
         }
     },
     linkText: {
-        fontSize: "1em !important",
+        fontSize: "18px !important",
         textTransform: "capitalize",
         color: theme.palette.text.primary,
         textAlign: "justify",
@@ -141,7 +135,7 @@ export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
         fontWeight: "600 !important",
     },
     subText: {
-        fontSize: "14px !important",
+        fontSize: "15px !important",
         fontWeight: "600 !important",
         textTransform: "capitalize !important",
     },
@@ -153,6 +147,13 @@ export const RtLSideBarNavigationStyle = makeStyles((theme) => ({
         padding: '15px 0',
         border: '1px solid #ddd',
         borderRadius: '8px 0 0 8px',
-        boxShadow: theme.shadows[1]
+        boxShadow: theme.shadows[12]
+    },
+    activeText: {
+        '& *': {
+            fontSize: '18px !important',
+            color: "#fff !important",
+            fontWeight: "600 !important",
+        }
     },
 }));

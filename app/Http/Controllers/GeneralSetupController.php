@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
@@ -12,6 +13,7 @@ use App\Models\Tenant\ShopSetting;
 use App\Models\Domain;
 use App\Models\Currency;
 use App\Models\Industry;
+use App\Models\Template;
 
 class GeneralSetupController extends Controller
 {
@@ -47,6 +49,15 @@ class GeneralSetupController extends Controller
         $data = $request->validated();
         $data['store_domain'] .= '.'.config('tenancy.central_domains')[0];
 
+        $default_template = Template::query()
+            ->select('id', 'name', 'slug', 'storage_path', 'industry_id', 'is_default', 'is_active')
+            ->where('industry_id', $data['store_industry'])
+            ->where('is_default', true)
+            ->where('is_active', true)
+            ->first();
+
+        $data['template'] = $default_template;
+
         $setting_data = $this->parseSettingsData($data);
 
         $central = DB::connection(config('tenancy.database.central_connection'));
@@ -70,6 +81,16 @@ class GeneralSetupController extends Controller
 
             $this->shop_setting->insert($setting_data);
 
+            $industry_slug = tenant()->industry->slug;
+
+            $industry_name = str_replace(' ', '', ucwords(str_replace('-', ' ', $industry_slug)));
+
+            Artisan::call('tenants:seed', [
+                '--force' => true,
+                '--tenants' => [tenant()->id],
+                '--class' => "Database\\Seeders\\Tenant\\Themes\\".$industry_name."\\Default\\TemplateSeeder",
+            ]);
+
             $central->commit();
             $tenant->commit();
 
@@ -77,6 +98,8 @@ class GeneralSetupController extends Controller
 
             $central->rollBack();
             $tenant->rollBack();
+
+            dd($th);
 
             Log::error('Store method failed', [
                 'exception' => $th,

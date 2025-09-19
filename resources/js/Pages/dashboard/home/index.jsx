@@ -30,7 +30,7 @@ const Home = ({ tenant }) => {
                 <Grid item md={12}>
                     <Box mt={2}>
                         <Typography className={classes.PageWelcome} variant="h5">
-                            Welcome back <span className={classes.userName}>{auth.user.first_name} {auth.user.last_name}</span> to Your {tenant.store_name} Shop Dashboard
+                            Welcome back <span className={classes.userName}>{auth.user.first_name} {auth.user.last_name}</span> to Your {tenant.store_name} Shop Admin Dashboard
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
                             Manage your store, track performance, and stay in control with ease.
@@ -55,18 +55,6 @@ const Home = ({ tenant }) => {
                                 classes={{root:classes.cardHeaderRoot, title: classes.cardHeaderTitle, subheader: classes.cardHeaderSubheader}}
                             />
                             <CardContent className={isOpen ? classes.cardContent : classes.cardContentClosed}>
-                                <Box mb={2} paddingX={1} borderRadius={15} sx={{backgroundColor: '#f5f5f5c2'}}>
-                                    <CollapsibleContent title="Setup Shipping"
-                                        isNestedOpen={isNestedOpen}
-                                        setIsNestedOpen={setIsNestedOpen}
-                                        type="c_product"
-                                    >
-                                        <Box mb={4}>
-                                            <Typography>Add products to showcase what you sell, including details and images to engage customers and start generating sales.</Typography>
-                                        </Box>
-                                        <Button variant="contained" size="small" color="primary">Add your first product now!</Button>
-                                    </CollapsibleContent>
-                                </Box>
                                 <Box mb={2} paddingX={1} borderRadius={15} sx={{backgroundColor: '#f5f5f5c2'}}>
                                     <CollapsibleContent title="Create a product"
                                         isNestedOpen={isNestedOpen}
@@ -93,16 +81,15 @@ const Home = ({ tenant }) => {
                                     </CollapsibleContent>
                                 </Box>
                                 <Box mb={2} paddingX={1} borderRadius={15} sx={{backgroundColor: '#f5f5f5c2'}}>
-                                    <CollapsibleContent
-                                        title="Add a Domain"
+                                    <CollapsibleContent title="Setup Shipping Zones"
                                         isNestedOpen={isNestedOpen}
                                         setIsNestedOpen={setIsNestedOpen}
-                                        type="domain"
+                                        type="c_product"
                                     >
                                         <Box mb={4}>
-                                            <Typography>Connect your store to a custom domain to give it a professional look, build trust, and make it easier for customers to find you.</Typography>
+                                            <Typography>Add products to showcase what you sell, including details and images to engage customers and start generating sales.</Typography>
                                         </Box>
-                                        <Button variant="contained" size="small" color="primary">Secure a domain for your store now!</Button>
+                                        <Button variant="contained" size="small" color="primary">Add your first product now!</Button>
                                     </CollapsibleContent>
                                 </Box>
                             </CardContent>

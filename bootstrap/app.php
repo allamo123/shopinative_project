@@ -8,6 +8,8 @@ use App\Http\Middleware\HandleInertiaRequest;
 use App\Http\Middleware\RedirectAuthenticatedUser;
 use App\Http\Middleware\EnsureUserIsSubscribed;
 use App\Http\Middleware\IsBussinessSetup;
+use App\Http\Middleware\StoreFrontMiddleware;
+use App\Http\Middleware\TenantDashboardMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -27,7 +29,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'isSubscribed'   => EnsureUserIsSubscribed::class,
             'guest.redirect' => RedirectAuthenticatedUser::class,
-            'isBussiness'    => IsBussinessSetup::class
+            'isBussiness'    => IsBussinessSetup::class,
+            'storeFrontend'  => StoreFrontMiddleware::class,
+            'storeDashboard' => TenantDashboardMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

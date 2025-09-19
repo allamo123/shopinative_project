@@ -21,7 +21,7 @@ const CollapsibleContent = ({ children, title, isNestedOpen, setIsNestedOpen, ty
                     <Typography>{title}</Typography>
                 </Box>
                 <IconButton  onClick={() => handleOpenNestedCard()}>
-                    {isNestedOpen ?  <KeyboardArrowUpIcon /> : <ChevronRightIcon />}
+                    {isNestedOpen === type ?  <KeyboardArrowUpIcon /> : <ChevronRightIcon />}
                 </IconButton>
             </Box>
             <Box className={isNestedOpen === type ? classes.nestedContentOpen : classes.nestedContentClosed}>
